@@ -528,5 +528,143 @@ $("#pilih_mapel").change(function() {
 });
 
 
+//upload soal
+// function m_upload_e(id) {
+// 	$("#m_upload").modal('show');
+// 	$.ajax({
+// 		type: "GET",
+// 		url: base_url+"lbb/index.php/upload/det/"+id,
+// 		success: function(data) {
+// 			$("#id").val(data.id);
+// 			$("#nama").val(data.nama);
+// 			$("#isi_soal").val(data.isi_soal);
+// 			$("#gambar").val(data.gambar);
+// 			$("#nama").focus();
+// 		}
+// 	});
+// 	return false;
+// }
+
+// function m_upload_h(id) {
+// 	if (confirm('Anda yakin..?')) {
+// 		$.ajax({
+// 			type: "GET",
+// 			url: base_url+"adm/m_upload/hapus/"+id,
+// 			success: function(response) {
+// 				if (response.status == "ok") {
+// 					window.location.assign(base_url+"adm/m_upload"); 
+// 				} else {
+// 					console.log('gagal');
+// 				}
+// 			}
+// 		});
+// 	}
+// 	return false;
+// }
+
+
+// administrasi /ke uangan
+
+function m_spp_e(id_spp) {
+	$("#m_spp").modal('show');
+	$.ajax({
+		type: "GET",
+		url: base_url+"adm/m_spp/det/"+id_spp,
+		success: function(data) {
+			$("#id_spp").val(data.id_spp);
+			$("#no_kwitansi").val(data.no_kwitansi);
+			$("#nim").val(data.nim);
+			$("#jumlah_uang").val(data.jumlah_uang);
+			$("#tgl_bayar").val(data.tgl_bayar);
+			$("#ket_bayar").val(data.ket_bayar);
+			$("#ket_ll").val(data.ket_ll);
+			$("#no_kwitansi").focus();
+		}
+	});
+	return false;
+}
+
+function m_spp_s() {
+	var f_asal	= $("#f_spp");
+	var form	= getFormData(f_asal);
+
+	$.ajax({		
+		type: "POST",
+		url: base_url+"adm/m_spp/simpan",
+		data: JSON.stringify(form),
+		dataType: 'json',
+		contentType: 'application/json; charset=utf-8'
+	}).done(function(response) {
+		if (response.status == "ok") {
+			window.location.assign(base_url+"adm/m_spp"); 
+		} else {
+			console.log('gagal');
+		}
+	});
+	return false;
+}
+
+function m_spp_h(id_spp) {
+	if (confirm('Anda yakin..?')) {
+		$.ajax({
+			type: "GET",
+			url: base_url+"adm/m_spp/hapus/"+id_spp,
+			success: function(response) {
+				if (response.status == "ok") {
+					window.location.assign(base_url+"adm/m_spp"); 
+				} else {
+					console.log('gagal');
+				}
+			}
+		});
+	}
+	return false;
+}
+
+function m_spp_e(id_spp) {
+	$("#m_spp").modal('show');
+	$.ajax({
+		type: "GET",
+		url: base_url+"adm/m_spp/det/"+id_spp,
+		success: function(data) {
+			$("#id_spp").val(data.id_spp);
+			$("#no_kwitansi").val(data.no_kwitansi);
+			$("#nim").val(data.nim);
+			$("#jumlah_uang").val(data.jumlah_uang);
+			$("#tgl_bayar").val(data.tgl_bayar);
+			$("#ket_bayar").val(data.ket_bayar);
+			$("#ket_ll").val(data.ket_ll);
+			$("#no_kwitansi").focus();
+		}
+	});
+	return false;
+}
+ //upload gambar
+
+function m_upload() {
+	var f_asal	= $("#f_upload");
+	var form	= getFormData(f_asal);
+
+	$.ajax({		
+		type: "POST",
+		url: base_url+"adm/m_upload/simpan",
+		data: JSON.stringify(form),
+		dataType: 'json',
+		contentType: 'application/json; charset=utf-8'
+	}).done(function(response) {
+		if (response.status == "ok") {
+			window.location.assign(base_url+"adm/m_upload"); 
+		} else {
+			console.log('gagal');
+		}
+	});
+	return false;
+}
+
+ 
+ //data absensi siswa 
+
+
+
 // $("#id_guru").val(id_guru_);
 //$("#id_guru").attr("readonly", true);

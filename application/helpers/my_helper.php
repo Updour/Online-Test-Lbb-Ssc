@@ -1,5 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
+function opn($array=null){
+	echo '<pre>';
+	print_r($array);
+	exit();
+}
+
 /* fungsi non database */
 function tjs ($tgl, $tipe) {
 	$pc_satu	= explode(" ", $tgl);

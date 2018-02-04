@@ -1,0 +1,201 @@
+<div class="row col-md-12">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Data Administrasi
+            <div class="tombol-kanan">
+                <a class="btn btn-info btn-sm" href="{base}/adm/m_soal/cetak" target="_blank">
+                    <i class="glyphicon glyphicon-print">
+                    </i>
+                    Cetak
+                </a>
+                <a class="btn btn-success btn-sm tombol-kanan" data-toggle="modal" href="#m_spp">
+                    <i class="glyphicon glyphicon-plus">
+                    </i>
+                    Tambah
+                </a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                Nomor Kwitansi
+                            </th>
+                            <th>
+                                NIM
+                            </th>
+                            <th>
+                                Jumlah Uang
+                            </th>
+                            <th>
+                                Tanggal Bayar
+                            </th>
+                            <th>
+                                Keterangan Bayar
+                            </th>
+                            <th>
+                                Keterangan Lain lain
+                            </th>
+                            <th>
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {spp_all}
+                        <tr>
+                            <td>
+                                {id_spp}
+                            </td>
+                            <td>
+                                {no_kwitansi}
+                            </td>
+                            <td>
+                                {nim}
+                            </td>
+                            <td>
+                                {jumlah_uang}
+                            </td>
+                            <td>
+                                {tgl_bayar}
+                            </td>
+                            <td>
+                                {ket_bayar}
+                            </td>
+                            <td>
+                                {ket_ll}
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-xs" href="{base}/adm/m_spp_cetak/{id_spp}">
+                                    Cetak
+                                </a>
+                                <button class="spp_edit btn btn-warning btn-xs" data-id_spp="{id_spp}">
+                                    Edit
+                                </button>
+                                | Delete
+                            </td>
+                        </tr>
+                        {/spp_all}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -->
+<div aria-labelledby="myModalLabel" class="modal fade" id="m_spp" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <form id="f_spp" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                    <h4 id="myModalLabel">
+                        Data  Administrasi
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input id="id_spp" name="id_spp" type="hidden" value=""/>
+                    <table class="table table-form">
+                        <tr>
+                            <td style="width: 25%">
+                                Nomor Kwitansi
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="no_kwitansi" name="no_kwitansi" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                NIM
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="nim" name="nim" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Jumlah Uang
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="jumlah_uang" name="jumlah_uang" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Tanggal Bayar
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="tgl_bayar" name="tgl_bayar" required-="" type="date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Keterangan bayar
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="ket_bayar" name="ket_bayar" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Keterangan Lain Lain
+                            </td>
+                            <td style="width: 75%">
+                                <textarea class="form-control bg-" id="ket_ll" name="ket_ll" required-="">
+                                </textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">
+                        Simpan
+                    </button>
+                    <button aria-hid_sppden="true" class="btn" data-dismiss="modal">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.spp_edit').each(function(index, el) {
+		$(this).on('click', function(event) {
+			event.preventDefault();
+			var id_spp = $(this).data('id_spp');
+
+			$("#m_spp").modal('show');
+			$.ajax({
+				type: "GET",
+				url: "{base}/adm/m_spp_detail_ajax/"+id_spp,
+				success: function(res) {
+					res = jQuery.parseJSON(res);
+					data = res.spp_detail[0];
+					console.log(data);
+
+					$("#id_spp").val(data.id_spp);
+					$("#no_kwitansi").val(data.no_kwitansi);
+					$("#nim").val(data.nim);
+					$("#jumlah_uang").val(data.jumlah_uang);
+					$("#tgl_bayar").val(data.tgl_bayar);
+					$("#ket_bayar").val(data.ket_bayar);
+					$("#ket_ll").val(data.ket_ll);
+					$("#no_kwitansi").focus();
+				}
+			});
+
+
+		});
+			
+	});
+</script>

@@ -44,7 +44,9 @@
         <li class="active"><a href="#">Ana Sayfa <span class="sr-only">(current)</span></a></li>
         -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $this->session->userdata('admin_nama')." (".$this->session->userdata('admin_user').")"; ?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <?php echo $this->session->userdata('admin_nama')." (".$this->session->userdata('admin_user').")"; ?> 
+            <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#" onclick="return rubah_password();">Ubah Password</a></li>
             <li><a href="<?php echo base_url(); ?>adm/logout" onclick="return confirm('keluar..?');">Logout</a></li>
@@ -77,15 +79,19 @@ if ($sess_level == "guru") {
   $menu = array(
             array("icon"=>"dashboard", "url"=>"", "text"=>"Dashboard"),
             array("icon"=>"file", "url"=>"ikuti_ujian", "text"=>"Ujian"),
+            array('icon' =>"download", "url" => "unduh", "text"=> "Lihat Soal"),
           );
 } else if ($sess_level == "admin") {
   $menu = array(
-            array("icon"=>"dashboard", "url"=>"", "text"=>"Dashboard"),
-            array("icon"=>"list-alt", "url"=>"m_siswa", "text"=>"Data Siswa"),
-            array("icon"=>"list-alt", "url"=>"m_guru", "text"=>"Data Guru/Dosen"),
-            array("icon"=>"list-alt", "url"=>"m_mapel", "text"=>"Data Mapel"),
-            array("icon"=>"list-alt", "url"=>"m_soal", "text"=>"Soal"),
-            array("icon"=>"file", "url"=>"h_ujian", "text"=>"Hasil Ujian"),
+            array("icon"=>"dashboard",    "url"=>"", "text"=>"Dashboard"),
+            array("icon"=>"user",         "url"=>"m_siswa", "text"=>"Data Siswa"),
+            array("icon"=>"th-list",      "url"=>"m_guru",  "text"=>"Data Guru/Dosen"),
+            array("icon"=>"tasks",        "url"=>"m_mapel", "text"=>"Data Mapel"),
+            array("icon"=>"folder-open",  "url"=>"m_soal",  "text"=>"Soal"),
+            array("icon"=>"file",         "url"=>"h_ujian", "text"=>"Hasil Ujian"),
+            array("icon"=>"euro",         "url"=>"m_spp", "text"=>"Data Administrasi"),
+            array("icon"=>"upload",       "url"=>"m_upload",  "text"=>"Upload Soal"),
+            array("icon"=>"book",         "url"=>"absensi", "text"=>"Data Absensi"),
           );
 } else {
   $menu = array(
@@ -104,9 +110,11 @@ if ($sess_level == "guru") {
     <?php 
     foreach ($menu as $m) {
         if ($uri2 == $m['url']) {
-          echo '<a href="'.base_url().'adm/'.$m['url'].'" class="btn btn-sq btn-warning"><i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
+          echo '<a href="'.base_url().'adm/'.$m['url'].'" class="btn btn-sq btn-info">
+            <i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
         } else {
-          echo '<a href="'.base_url().'adm/'.$m['url'].'" class="btn btn-sq btn-primary"><i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
+          echo '<a href="'.base_url().'adm/'.$m['url'].'" class="btn btn-sq btn-primary">
+            <i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
         }
     }
     ?>
@@ -117,7 +125,7 @@ if ($sess_level == "guru") {
 <?php echo $this->load->view($p); ?>
 
 <div class="col-md-12" style="border-top: solid 4px #ddd; text-align: center; padding-top: 10px; margin-top: 50px; margin-bottom: 20px">
-  &copy; 2015 <a href="http://sedotcode.blogspot.com/">Aplikasi Ujian Online</a>. 
+  &copy; 2015 <a href="">Aplikasi Ujian Online</a>. 
 </div>
 
 <!-- insert modal -->
