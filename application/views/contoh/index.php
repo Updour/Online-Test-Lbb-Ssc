@@ -9,6 +9,8 @@
 <link href="{base}/___/css/style.css" rel="stylesheet"> 
 <script src="{base}/___/js/jquery-1.11.3.min.js"></script>
 </head>
+<script src="{base}/___/js/bootstrap.min.js"></script>
+</head>
 <body>
 
        
@@ -105,7 +107,6 @@ if ($sess_level == "guru") {
     </div>
   </div>
 </div>
-
  <hr/>
         <div class="content">
             <div class="container">

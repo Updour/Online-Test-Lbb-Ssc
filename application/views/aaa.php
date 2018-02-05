@@ -109,7 +109,7 @@ if ($sess_level == "guru") {
     <div class="panel-body">
     <?php 
     foreach ($menu as $m) {
-      
+
         if ($uri2 == $m['url']) {
           echo '<a href="'.base_url().'adm/'.$m['url'].'" class="btn btn-sq btn-info">
             <i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
@@ -118,11 +118,10 @@ if ($sess_level == "guru") {
             <i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
         }
     }
-    ?>
+    ?> 
     </div>
   </div>
 </div>
-
 <?php echo $this->load->view($p); ?>
 
 <div class="col-md-12" style="border-top: solid 4px #ddd; text-align: center; padding-top: 10px; margin-top: 50px; margin-bottom: 20px">

@@ -105,7 +105,6 @@
             <form class="form-horizontal" enctype="multipart/form-data" method="POST">
                 <div class="modal-header">
                     <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                        ×
                     </button>
                     <h4 class="modal-title">
                         Edit
@@ -151,11 +150,23 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    $('#edit_upload').on('hidden.bs.modal', function(event) {
+        event.preventDefault();
+
+            $('#edit_upload').find('form')[0].reset();
+            $('#edit_upload').find('form').find('input').val('');
+            $('#edit_upload').find('form').find('textarea').text('');
+        /* Act on the event */
+    });
     $('.btn_edit').each(function(index, el) {
+
+
         var id = $(this).data('id');
         var nama = $(this).data('nama');
         var isi_soal = $(this).data('isi_soal');
         $(this).on('click', function(event) {
+
             event.preventDefault();
             $('#edit_upload').modal('show');
 

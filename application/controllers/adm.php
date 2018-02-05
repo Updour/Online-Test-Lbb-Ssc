@@ -1191,8 +1191,15 @@ class Adm extends MY_Controller
                 );
                 break;
 
-        }
+        } 
 
+        foreach ($menu as $key => $value) {
+            $menu[$key]['warna'] = 'primary';
+            if ($value['url'] == $this->router->method ) {
+                $menu[$key]['warna'] = 'info';
+            }
+        }
+        // opn($menu);
         $this->data['menu'] = $menu;
 
 ///////////////
@@ -1218,16 +1225,21 @@ class Adm extends MY_Controller
             if (isset($arg[0])) {
                 $id_spp = $arg[0];
                 $this->db->where('id_spp', $id_spp);
+                $this->db->join('m_siswa', 'm_siswa.id = m_spp.id_siswa', 'left');
+
                 $spp_detail               = $this->db->get('m_spp')->result();
                 $this->data['spp_detail'] = $spp_detail;
                 $this->data['content']    = $this->parser->parse('contoh/m_spp_detail.html', $this->data, true);
             } else {
+                $this->db->join('m_siswa', 'm_siswa.id = m_spp.id_siswa', 'left');
+
                 $spp_all               = $this->db->get('m_spp')->result();
+
                 $this->data['spp_all'] = $spp_all;
                 $this->data['content'] = $this->parser->parse('contoh/m_spp.html', $this->data, true);
             }
 
-            $this->parser->parse('contoh/index', $this->data, false);
+            $this->parser->parse('contoh/index.html', $this->data, false);
         }
 
     }
