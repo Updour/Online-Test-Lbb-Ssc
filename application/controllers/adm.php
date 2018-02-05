@@ -1227,7 +1227,7 @@ class Adm extends MY_Controller
                 $this->data['content'] = $this->parser->parse('contoh/m_spp.html', $this->data, true);
             }
 
-            $this->parser->parse('contoh/index.html', $this->data, false);
+            $this->parser->parse('contoh/index', $this->data, false);
         }
 
     }
@@ -1237,71 +1237,71 @@ class Adm extends MY_Controller
 
 //tar ini js nya
 
-    public function m_spp_sesat_kkwkw()
-    {
-        $this->cek_aktif();
+    // public function m_spp_sesat_kkwkw()
+    // {
+    //     $this->cek_aktif();
 
-        //var def session
-        $a['sess_level'] = $this->session->userdata('admin_level');
-        $a['sess_user']  = $this->session->userdata('admin_user');
-        $a['sess_konid'] = $this->session->userdata('admin_konid');
+    //     //var def session
+    //     $a['sess_level'] = $this->session->userdata('admin_level');
+    //     $a['sess_user']  = $this->session->userdata('admin_user');
+    //     $a['sess_konid'] = $this->session->userdata('admin_konid');
 
-        //var def uri segment
-        $uri2 = mysql_real_escape_string($this->uri->segment(2));
-        $uri3 = mysql_real_escape_string($this->uri->segment(3));
-        $uri4 = mysql_real_escape_string($this->uri->segment(4));
+    //     //var def uri segment
+    //     $uri2 = mysql_real_escape_string($this->uri->segment(2));
+    //     $uri3 = mysql_real_escape_string($this->uri->segment(3));
+    //     $uri4 = mysql_real_escape_string($this->uri->segment(4));
 
-        //var post from json
-        $p = json_decode(file_get_contents('php://input'));
+    //     //var post from json
+    //     $p = json_decode(file_get_contents('php://input'));
 
-        //return as json
-        $jeson = array();
+    //     //return as json
+    //     $jeson = array();
 
-        $a['data'] = $this->db->query("SELECT * from m_spp")->result();
+    //     $a['data'] = $this->db->query("SELECT * from m_spp")->result();
 
-        if ($uri3 == "det") {
-            $a = $this->db->query("SELECT * FROM m_spp WHERE id_spp= '$uri4'")->row();
-            $this->j($a);
-            exit();
-        } else if ($uri3 == "simpan") {
-            $ket = "";
-            if ($p->id_spp != 0) {
-                $this->db->query("UPDATE m_spp SET
-								no_kwitansi = '" . bersih($p, "no_kwitansi") . "',
-								nim = '" . bersih($p, "nim") . "',
-								jumlah_uang = '" . bersih($p, "jumlah_uang") . "',
-								tgl_bayar = '" . bersih($p, "tgl_bayar") . "',
-								ket_bayar = '" . bersih($p, "ket_bayar") . "',
-								ket_ll = '" . bersih($p, "ket_ll") . "'
-								WHERE id_spp = '" . bersih($p, "id_spp") . "'");
-                $ket = "edit";
-            } else {
-                $ket = "tambah";
-                $this->db->query("INSERT INTO m_spp VALUES (null,
-						'" . bersih($p, "no_kwitansi") . "',
-						'" . bersih($p, "nim") . "',
-						'" . bersih($p, "jumlah_uang") . "',
-						'" . bersih($p, "tgl_bayar") . "',
-						'" . bersih($p, "ket_bayar") . "',
-						'" . bersih($p, "ket_ll") . "'
-						)");
-            }
-            $ret_arr['status']  = "ok";
-            $ret_arr['caption'] = $ket . " sukses";
-            $this->j($ret_arr);
-            exit();
-        } else if ($uri3 == "hapus") {
-            $this->db->query("DELETE FROM m_spp WHERE id_spp = '" . $uri4 . "'");
-            $ret_arr['status']  = "ok";
-            $ret_arr['caption'] = "hapus sukses";
-            $this->j($ret_arr);
-            exit();
-        } else {
-            $a['p'] = "administrasi/m_spp";
-        }
+    //     if ($uri3 == "det") {
+    //         $a = $this->db->query("SELECT * FROM m_spp WHERE id_spp= '$uri4'")->row();
+    //         $this->j($a);
+    //         exit();
+    //     } else if ($uri3 == "simpan") {
+    //         $ket = "";
+    //         if ($p->id_spp != 0) {
+    //             $this->db->query("UPDATE m_spp SET
+				// 				no_kwitansi = '" . bersih($p, "no_kwitansi") . "',
+				// 				nim = '" . bersih($p, "nim") . "',
+				// 				jumlah_uang = '" . bersih($p, "jumlah_uang") . "',
+				// 				tgl_bayar = '" . bersih($p, "tgl_bayar") . "',
+				// 				ket_bayar = '" . bersih($p, "ket_bayar") . "',
+				// 				ket_ll = '" . bersih($p, "ket_ll") . "'
+				// 				WHERE id_spp = '" . bersih($p, "id_spp") . "'");
+    //             $ket = "edit";
+    //         } else {
+    //             $ket = "tambah";
+    //             $this->db->query("INSERT INTO m_spp VALUES (null,
+				// 		'" . bersih($p, "no_kwitansi") . "',
+				// 		'" . bersih($p, "nim") . "',
+				// 		'" . bersih($p, "jumlah_uang") . "',
+				// 		'" . bersih($p, "tgl_bayar") . "',
+				// 		'" . bersih($p, "ket_bayar") . "',
+				// 		'" . bersih($p, "ket_ll") . "'
+				// 		)");
+    //         }
+    //         $ret_arr['status']  = "ok";
+    //         $ret_arr['caption'] = $ket . " sukses";
+    //         $this->j($ret_arr);
+    //         exit();
+    //     } else if ($uri3 == "hapus") {
+    //         $this->db->query("DELETE FROM m_spp WHERE id_spp = '" . $uri4 . "'");
+    //         $ret_arr['status']  = "ok";
+    //         $ret_arr['caption'] = "hapus sukses";
+    //         $this->j($ret_arr);
+    //         exit();
+    //     } else {
+    //         $a['p'] = "administrasi/m_spp";
+    //     }
 
-        $this->load->view('aaa', $a);
-    }
+    //     $this->load->view('aaa', $a);
+    // }
 
     //data absensi siwa
 

@@ -109,6 +109,7 @@ if ($sess_level == "guru") {
     <div class="panel-body">
     <?php 
     foreach ($menu as $m) {
+      
         if ($uri2 == $m['url']) {
           echo '<a href="'.base_url().'adm/'.$m['url'].'" class="btn btn-sq btn-info">
             <i class="glyphicon glyphicon-'.$m['icon'].' g3x"></i><br><br/>'.$m['text'].' </a>';
