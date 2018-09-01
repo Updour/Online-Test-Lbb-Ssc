@@ -10,15 +10,27 @@ Online Exam Application, is an application that is used to carry out the test pr
 3. JSON data format for exchanging data between server and client, on AJAX menus
 4. Design UI with CSS framework, Twitter Bootstrap
 
+***********
 #Level user : 
+***********
 1. Admin, is the highest level of application, can manage data: teacher / lecturer, students, subjects, questions, see exam results
 2. The teacher, has access, can manage data: questions, list of exams, and see exam results
 3. Students, have access, can take the exam, according to the subjects he follows, which are regulated by the admin level, and see the results of the exam.
 
+***********
+#Application source from the
+***********
+http://basecamp18.com/berita-40-aplikasi-ujian-online-cat-versi-2-dengan-codeigniter-ajax-json-.html
+
+***********
+#story
+
+***********
+then we develop again what we need, with me and my friend
+
+***********
 #Developer
+***********
 1. Anang
 2. Updour
-
-#Application source from the
-http://basecamp18.com/berita-40-aplikasi-ujian-online-cat-versi-2-dengan-codeigniter-ajax-json-.html
 
