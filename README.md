@@ -2,7 +2,9 @@
 #description
 Online Exam Application, is an application that is used to carry out the test process, without using paper (paperless), or now trendy under the name Computer Based Test (CBT). All the exam processes are carried out through a computer, starting from the making of questions, class settings, user settings can take the exam, arrange teacher teaching, until the exam process, by utilizing web engineering technology. The types of questions that can enter the online exam application in this discussion are the types of multiple choice questions.
 
+***********
 #Programming :
+***********
 1. PHP with framework: Codeigniter version 2.2.1
 2. JQuery JavaScript, to handle javascript commands, and so on.
 3. JSON data format for exchanging data between server and client, on AJAX menus
@@ -17,5 +19,6 @@ Online Exam Application, is an application that is used to carry out the test pr
 1. Anang
 2. Updour
 
-#Application source from the internet http://basecamp18.com/berita-40-aplikasi-ujian-online-cat-versi-2-dengan-codeigniter-ajax-json-.html
+#Application source from the
+http://basecamp18.com/berita-40-aplikasi-ujian-online-cat-versi-2-dengan-codeigniter-ajax-json-.html
 
