@@ -96,7 +96,6 @@ class Adm extends MY_Controller
 								'" . bersih($p, "keterangan") . "'
 								)");
             }
-
             $ret_arr['status']  = "ok";
             $ret_arr['caption'] = $ket . " sukses";
             $this->j($ret_arr);
@@ -1128,7 +1127,7 @@ class Adm extends MY_Controller
 
             //opn($spp_detail);
 
-            $this->parser->parse('contoh/m_spp_cetak.html', $this->data, false);
+            $this->parser->parse('administrasi/m_spp_cetak.html', $this->data, false);
         }
     }
     ///////////////////////////////////////////////////
@@ -1172,7 +1171,7 @@ class Adm extends MY_Controller
                     array("icon" => "file", "url" => "h_ujian", "text" => "Hasil Ujian"),
                     array("icon" => "euro", "url" => "m_spp", "text" => "Data Administrasi"),
                     array("icon" => "upload", "url" => "m_upload", "text" => "Upload Soal"),
-                    array("icon" => "book", "url" => "absensi", "text" => "Data Absensi"),
+                    array("icon" => "book", "url" => "m_absensi", "text" => "Data Absensi"),
                 );
                 break;
             case 'siswa':
@@ -1203,9 +1202,9 @@ class Adm extends MY_Controller
         $this->data['menu'] = $menu;
 
 ///////////////
-        $this->data['topbar'] = $this->parser->parse('contoh/topbar.html', $this->data, true);
-        $this->data['header'] = $this->parser->parse('contoh/header.html', $this->data, true);
-        $this->data['footer'] = $this->parser->parse('contoh/footer.html', $this->data, true);
+        $this->data['topbar'] = $this->parser->parse('administrasi/topbar.html', $this->data, true);
+        $this->data['header'] = $this->parser->parse('administrasi/header.html', $this->data, true);
+        $this->data['footer'] = $this->parser->parse('administrasi/footer.html', $this->data, true);
 
         if ($this->input->post()) {
 
@@ -1236,84 +1235,16 @@ class Adm extends MY_Controller
                 $spp_all               = $this->db->get('m_spp')->result();
 
                 $this->data['spp_all'] = $spp_all;
-                $this->data['content'] = $this->parser->parse('contoh/m_spp.html', $this->data, true);
+                $this->data['content'] = $this->parser->parse('administrasi/m_spp.html', $this->data, true);
             }
 
-            $this->parser->parse('contoh/index.html', $this->data, false);
+            $this->parser->parse('administrasi/index.html', $this->data, false);
         }
 
     }
     ///////////////////////////////////////////////////
     ///////////////////////////////////////////////////
     ///////////////////////////////////////////////////
-
-//tar ini js nya
-
-    // public function m_spp_sesat_kkwkw()
-    // {
-    //     $this->cek_aktif();
-
-    //     //var def session
-    //     $a['sess_level'] = $this->session->userdata('admin_level');
-    //     $a['sess_user']  = $this->session->userdata('admin_user');
-    //     $a['sess_konid'] = $this->session->userdata('admin_konid');
-
-    //     //var def uri segment
-    //     $uri2 = mysql_real_escape_string($this->uri->segment(2));
-    //     $uri3 = mysql_real_escape_string($this->uri->segment(3));
-    //     $uri4 = mysql_real_escape_string($this->uri->segment(4));
-
-    //     //var post from json
-    //     $p = json_decode(file_get_contents('php://input'));
-
-    //     //return as json
-    //     $jeson = array();
-
-    //     $a['data'] = $this->db->query("SELECT * from m_spp")->result();
-
-    //     if ($uri3 == "det") {
-    //         $a = $this->db->query("SELECT * FROM m_spp WHERE id_spp= '$uri4'")->row();
-    //         $this->j($a);
-    //         exit();
-    //     } else if ($uri3 == "simpan") {
-    //         $ket = "";
-    //         if ($p->id_spp != 0) {
-    //             $this->db->query("UPDATE m_spp SET
-				// 				no_kwitansi = '" . bersih($p, "no_kwitansi") . "',
-				// 				nim = '" . bersih($p, "nim") . "',
-				// 				jumlah_uang = '" . bersih($p, "jumlah_uang") . "',
-				// 				tgl_bayar = '" . bersih($p, "tgl_bayar") . "',
-				// 				ket_bayar = '" . bersih($p, "ket_bayar") . "',
-				// 				ket_ll = '" . bersih($p, "ket_ll") . "'
-				// 				WHERE id_spp = '" . bersih($p, "id_spp") . "'");
-    //             $ket = "edit";
-    //         } else {
-    //             $ket = "tambah";
-    //             $this->db->query("INSERT INTO m_spp VALUES (null,
-				// 		'" . bersih($p, "no_kwitansi") . "',
-				// 		'" . bersih($p, "nim") . "',
-				// 		'" . bersih($p, "jumlah_uang") . "',
-				// 		'" . bersih($p, "tgl_bayar") . "',
-				// 		'" . bersih($p, "ket_bayar") . "',
-				// 		'" . bersih($p, "ket_ll") . "'
-				// 		)");
-    //         }
-    //         $ret_arr['status']  = "ok";
-    //         $ret_arr['caption'] = $ket . " sukses";
-    //         $this->j($ret_arr);
-    //         exit();
-    //     } else if ($uri3 == "hapus") {
-    //         $this->db->query("DELETE FROM m_spp WHERE id_spp = '" . $uri4 . "'");
-    //         $ret_arr['status']  = "ok";
-    //         $ret_arr['caption'] = "hapus sukses";
-    //         $this->j($ret_arr);
-    //         exit();
-    //     } else {
-    //         $a['p'] = "administrasi/m_spp";
-    //     }
-
-    //     $this->load->view('aaa', $a);
-    // }
 
     //data absensi siwa
 
@@ -1353,8 +1284,8 @@ class Adm extends MY_Controller
             $upload_data               = $this->db->get('m_upload')->result();
             $this->data['upload_data'] = $upload_data;
 
-            $this->data['content'] = $this->parser->parse('contoh/content', $this->data, true);
-            $this->parser->parse('contoh/index', $this->data, false);
+            $this->data['content'] = $this->parser->parse('soal/content', $this->data, true);
+            $this->parser->parse('soal/index', $this->data, false);
 
         }
     }
@@ -1384,11 +1315,155 @@ class Adm extends MY_Controller
         $upload_data               = $this->db->get('m_upload')->result();
         $this->data['upload_data'] = $upload_data;
 
-        $this->data['content'] = $this->parser->parse('contoh/unduh', $this->data, true);
-        $this->parser->parse('contoh/index', $this->data, false);
+        $this->data['content'] = $this->parser->parse('siswa/unduh', $this->data, true);
+        $this->parser->parse('siswa/index', $this->data, false);
 
     }
 
+    //absensi siswa
+
+        public function m_absen_detail_ajax($id = null)
+    {
+
+        if ($this->input->is_ajax_request()) {
+            if ($this->input->get('id')) {
+                $id = $this->input->get('id');
+            }
+            if (isset($id)) {
+                $this->db->where('id', $id);
+                $absen_detail        = $this->db->get('m_absen')->result();
+                $res['absen_detail'] = $absen_detail;
+
+                echo json_encode($res);
+            }
+        }
+    }
+    ////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    public function m_absensi()
+    {
+
+        $sess_level = $this->session->userdata('admin_level');
+
+        $this->data['admin_nama'] = $this->session->userdata('admin_nama');
+        $this->data['admin_user'] = $this->session->userdata('admin_user');
+
+        $menu = array();
+        switch ($sess_level) {
+            case 'admin':
+
+                $menu = array(
+                    array("icon" => "dashboard", "url" => "", "text" => "Dashboard"),
+                    array("icon" => "user", "url" => "m_siswa", "text" => "Data Siswa"),
+                    array("icon" => "th-list", "url" => "m_guru", "text" => "Data Guru/Dosen"),
+                    array("icon" => "tasks", "url" => "m_mapel", "text" => "Data Mapel"),
+                    array("icon" => "folder-open", "url" => "m_soal", "text" => "Soal"),
+                    array("icon" => "file", "url" => "h_ujian", "text" => "Hasil Ujian"),
+                    array("icon" => "euro", "url" => "m_spp", "text" => "Data Administrasi"),
+                    array("icon" => "upload", "url" => "m_upload", "text" => "Upload Soal"),
+                    array("icon" => "book", "url" => "m_absensi", "text" => "Data Absensi"),
+                );
+                break;
+            case 'siswa':
+                $menu = array(
+                    array("icon" => "dashboard", "url" => "", "text" => "Dashboard"),
+                    array("icon" => "file", "url" => "ikuti_ujian", "text" => "Ujian"),
+                    array('icon' => "download", "url" => "unduh", "text" => "Download Soal"),
+                );
+                break;
+            case 'guru':
+                $menu = array(
+                    array("icon" => "dashboard", "url" => "", "text" => "Dashboard"),
+                    array("icon" => "list-alt", "url" => "m_soal", "text" => "Soal"),
+                    array("icon" => "file", "url" => "m_ujian", "text" => "Ujian"),
+                    array("icon" => "file", "url" => "h_ujian", "text" => "Hasil Ujian"),
+                );
+                break;
+
+        } 
+
+        foreach ($menu as $key => $value) {
+            $menu[$key]['warna'] = 'primary';
+            if ($value['url'] == $this->router->method ) {
+                $menu[$key]['warna'] = 'info';
+            }
+        }
+        // opn($menu);
+        $this->data['menu'] = $menu;
+
+///////////////
+        $this->data['topbar'] = $this->parser->parse('siswa/topbar.html', $this->data, true);
+        $this->data['header'] = $this->parser->parse('siswa/header.html', $this->data, true);
+        $this->data['footer'] = $this->parser->parse('siswa/footer.html', $this->data, true);
+
+        if ($this->input->post()) {
+
+            $param = $this->input->post();
+            //opn($param);
+            if (isset($param['id']) && !empty($param['id'])) {
+                $this->db->where('id', $param['id']);
+                $this->db->update('m_absen', $param);
+            } else {
+                $this->db->insert('m_absen', $param);
+            }
+            redirect(base . '/adm/m_absensi', 'refresh');
+
+        } else {
+
+            $arg = func_get_args();
+            if (isset($arg[0])) {
+                $id_spp = $arg[0];
+                $this->db->where('id', $id_spp);
+                $this->db->join('m_siswa', 'm_siswa.id = m_absen.id_siswa', 'left');
+
+                $absen_detail               = $this->db->get('m_absen')->result();
+                $this->data['absen_detail'] = $absen_detail;
+                $this->data['content']    = $this->parser->parse('siswa/absen_detail.html', $this->data, true);
+            } else {
+                $this->db->join('m_siswa', 'm_siswa.id = m_absen.id_siswa', 'left');
+                    //untuk absen siswa
+                $absen_all               = $this->db->get('m_absen')->result();
+                // var_dump($absen_all);
+                    //untuk siswa tampilannya
+                $siswa_all               = $this->db->get('m_siswa')->result();
+                    // untuk mapel siswa
+                $mapel_all               = $this->db->get('m_mapel')->result();
+                    // untuk absen siswa
+                // $mapel_all               = $this->db->get('m_mapel')->result();
+
+                $this->data['mapel_all'] = $mapel_all; //untuk mnempilkan data
+                $this->data['siswa_all'] = $siswa_all;
+                $this->data['absen_all'] = $absen_all;
+                $this->data['content'] = $this->parser->parse('siswa/m_absensi.html', $this->data, true);
+            }
+
+            $this->parser->parse('siswa/index.html', $this->data, false);
+        }
+
+    }
+     public function delete_absen($id)
+    {
+        if (isset($id)) {
+            $this->db->where('id', $id);
+            $this->db->delete('m_absen');
+            redirect(base . '/adm/m_absensi', 'refresh'); //bukannya yang ini ta mas redirectnya
+        }
+          
+    }
+     public function m_absen_cetak()
+     {
+        $arg = func_get_args();
+            if (isset($arg[0])) {
+                $id_spp = $arg[0];
+                $this->db->where('id', $id_spp);
+                $this->db->join('m_siswa', 'm_siswa.id = m_absen.id_siswa', 'left');
+
+                $absen_detail               = $this->db->get('m_absen')->result();
+                $this->data['absen_detail'] = $absen_detail;
+                $this->data['content']    = $this->parser->parse('siswa/absen_detail.html', $this->data, true);
+            $this->parser->parse('siswa/m_absen_cetak.html', $this->data, false);
+        }
+    }
+    
 }
 /*****************************************************************************/
 /* End of file welcome.php */

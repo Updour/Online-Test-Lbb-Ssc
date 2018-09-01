@@ -1,0 +1,24 @@
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nama</th>
+				<th>Total Tagihan</th>
+				<th>Terbayar</th>
+				<th>Terhutang</th>
+			</tr>
+		</thead>
+		<tbody>
+			{siswa_detail}
+			<tr>
+				<td>{id_siswa}</td>
+				<td>{nama}</td>
+				<td>Rp. {harga_paket_format}</td>
+				<td>Rp. {harga_paket_terbayar_format}</td>
+				<td>Rp. {harga_paket_terhutang_format}</td>
+			</tr>
+			{/siswa_detail}
+		</tbody>
+	</table>
+</div>

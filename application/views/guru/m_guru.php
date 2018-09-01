@@ -15,8 +15,10 @@
             <th width="60%">Nama</th>
             <th width="35%">Aksi</th>
           </tr>
-        </thead>
-
+        </thead><!-- 
+ // <a href="#" onclick="return m_guru_matkul('.$d->id.');" class="btn btn-success btn-xs">
+                          // <i class="glyphicon glyphicon-th-list" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Mata Kuliah</a>
+                           -->
         <tbody>
           <?php 
             if (!empty($data)) {
@@ -30,15 +32,13 @@
                       <button data-toggle="dropdown" class="btn btn-info">Manipulasi Data </button>
                       <ul class="dropdown-menu" >
                        <li> 
-                          <a href="#" onclick="return m_guru_e('.$d->id.');" class="btn btn-info btn-xs">
+                          <a href="#" onclick="return m_guru_e('.$d->id_guru.');" class="btn btn-info btn-xs">
                           <i class="glyphicon glyphicon-pencil" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Edit</a>
-                          <a href="#" onclick="return m_guru_h('.$d->id.');" class="btn btn-danger btn-xs">
+                          <a href="#" onclick="return m_guru_h('.$d->id_guru.');" class="btn btn-danger btn-xs">
                           <i class="glyphicon glyphicon-remove" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Hapus</a>
-                          <a href="#" onclick="return m_guru_matkul('.$d->id.');" class="btn btn-success btn-xs">
-                          <i class="glyphicon glyphicon-th-list" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Mata Kuliah</a>
-                          ';
+                         ';
                 if ($d->ada == "0") {
-                  echo '<a href="#" onclick="return m_guru_u('.$d->id.');" 
+                  echo '<a href="#" onclick="return m_guru_u('.$d->id_guru.');" 
                   class="btn btn-info btn-xs">
                   <i class="glyphicon glyphicon-user" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Aktifkan User</a>';
                 } 

@@ -1,0 +1,251 @@
+<div class="row col-md-12">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Data Absensi
+           <!--  <div class="tombol-kanan">
+                <a class="btn btn-info btn-sm" href="{base}/adm/m_soal/cetak" target="_blank">
+                    <i class="glyphicon glyphicon-print">
+                    </i>
+                    Cetak
+                </a> -->
+                <a class="btn btn-success btn-sm tombol-kanan"  href="{base}/adm/siswa_new">
+                    <i class="glyphicon glyphicon-plus">
+                    </i>
+                    Tambah Siswa
+                </a> 
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                Nama Siswa
+                            </th>
+                            <th>HP</th>
+                            <th>Status</th>
+                            <th>
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {siswa_all}
+                        <tr>
+                            <td>
+                                {id_siswa}
+                            </td>
+                            <td>
+                                {nama}
+                            </td>
+                            <td>
+                                {no_hp_siswa}
+                            </td>
+                            <td>
+                                {status_aktif}
+                            </td>
+                            <td>
+                                <a class="btn btn-info btn-xs {tombol_aktifkan}" href="{base}/adm/siswa_activation/{id_siswa}">
+                                    Aktifkan
+                                </a>
+                                <a class=" btn btn-warning btn-xs" href="{base}/adm/siswa_edit/{id_siswa}">
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="{base}/adm/siswa_delete/{id_siswa}"  
+                                    onclick="return confirm('Yakin.?\n\nWarning: This action can\'t be undone...!!!')">
+                                     Delete
+                                 </a>    
+                            </td> 
+                            <!-- //mas apa gak bisa di model modal aja agar sama dg yang lain, males hehehe
+                            kamu modalin aja ntar
+                            //kan lebih simple keknya mas,,
+                            kalau kamu faham logikanya gampang sebenarnya
+                            in iaku bikin yg mudah difahami dulu
+                            supaya logikamu nyantol
+                            //oke siap2 mas, tar buat sendiri n tar ini tak simulasikan untuk yg akun siswanya mas -->
+                        </tr>
+                        {/siswa_all}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -->
+<div aria-labelledby="myModalLabel" class="modal fade" id="m_absensi" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <form id="" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">
+                            ×
+                        </span>
+                    </button>
+                    <h4 id="myModalLabel">
+                        Data  Absensi Siswa
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input id="id" name="id" type="hidden" value="" />
+                    <table class="table table-form">
+        <!--          <?php 
+                        if (!empty($data)) {
+                          $no = 1;
+                          foreach ($data as $d) {
+                            echo '<tr>
+                                    <td class="ctr">'.$no.'</td>
+                                    <td>'.$d->nama.'</td>
+                                    ';
+                            }
+                        }
+                    ?> -->
+                        <tr>
+                            <td style="width: 25%">
+                                Nama Siswa
+                            </td>
+                            <td  >
+                                <select class="form-control" name="id_siswa" id="id_siswa">
+                                    {siswa_all}
+                                    <option value="{id}">{nama}</option>
+                                    {/siswa_all}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Tanggal Absensi
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="tanggal" name="tanggal" required-="" type="date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Mata Pelajaran
+                            </td>
+                            <td style="width: 75%">
+                                  <select class="form-control" name="mapel" required="">
+                                     <option>Pilih Mata Pelajaran</option> 
+                                    {mapel_all}
+                                    <option>{nama}</option>
+                                    {/mapel_all}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Materi Pilihan
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="materi" name="materi" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Kehadiran
+                            </td>
+                            <td style="width: 75%">
+                                <select class="form-control"  id="kehadiran" name="kehadiran" required="">
+                                    <option>Pilih kehadiran</option>
+                                    <option>•</option>
+                                    <option>—</option>
+                                </select>
+                               <!--  <input class="form-control" id="kehadiran" name="kehadiran" required-="" type="text"/> -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Benar
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="benar" name="benar" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Salah
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="salah" name="salah" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Kosong
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="kosong" name="kosong" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 25%">
+                                Totalan
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="total" name="total" required-="" type="text"/>
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td style="width: 25%">
+                                Keterangan Siswa
+                            </td>
+                            <td style="width: 75%">
+                                <input class="form-control" id="ket" name="ket" required-="" type="text"/>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">
+                        Simpan
+                    </button>
+                    <button aria-hidden="true" class="btn" data-dismiss="modal">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+   $('.absen_edit').each(function(index, el) {
+        $(this).on('click', function(event) {
+            event.preventDefault();
+            var id = $(this).data('id');
+
+            $("#m_absensi").modal('show');
+            $.ajax({
+                type: "GET",
+                url: "{base}/adm/m_absen_detail_ajax/"+id,
+                success: function(res) {
+                    res = jQuery.parseJSON(res);
+                    data = res.absen_detail[0];
+                    console.log(data);
+
+					$("#id").val(data.id);
+                    // $("#id_siswa").val(data.id_siswa);
+                    $("#tanggal").val(data.tanggal);
+                    $("#mapel").val(data.mapel);
+                    $("#materi").val(data.materi);
+                    $("#kehadiran").val(data.kehadiran);
+                    $("#benar").val(data.benar);
+                    $("#salah").val(data.salah);
+                    $("#kosong").val(data.kosong);
+                    $("#total").val(data.total);
+					$("#ket").val(data.ket);
+					$("#tanggal").focus();
+				}
+			});
+
+
+		});
+			
+	});
+</script>

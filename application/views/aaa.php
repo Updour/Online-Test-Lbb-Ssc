@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Dashboard - Aplikasi Ujian Online</title>
+<title>Dashboard - Aplikasi Ujian Onlined</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link href="<?php echo base_url(); ?>___/css/bootstrap.css" rel="stylesheet">
@@ -17,7 +17,7 @@
     <![endif]-->
 </head>
 <body>
-
+<!-- index bawaannya mas -->
 
 <nav class="navbar navbar-findcond navbar-fixed-top">
     <div class="container">
@@ -28,7 +28,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand">Aplikasi Ujian Online</a>
+      <a class="navbar-brand">Aplikasi Ujian Online hgvghfv</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav navbar-right">
@@ -84,15 +84,15 @@ if ($sess_level == "guru") {
 } else if ($sess_level == "admin") {
   $menu = array(
             array("icon"=>"dashboard",    "url"=>"", "text"=>"Dashboard"),
-            array("icon"=>"user",         "url"=>"m_siswa", "text"=>"Data Siswa"),
+            array("icon"=>"user",         "url"=>"data_siswa", "text"=>"Data Siswa"),
             array("icon"=>"th-list",      "url"=>"m_guru",  "text"=>"Data Guru/Dosen"),
             array("icon"=>"tasks",        "url"=>"m_mapel", "text"=>"Data Mapel"),
             array("icon"=>"folder-open",  "url"=>"m_soal",  "text"=>"Soal"),
             array("icon"=>"file",         "url"=>"h_ujian", "text"=>"Hasil Ujian"),
             array("icon"=>"euro",         "url"=>"m_spp", "text"=>"Data Administrasi"),
             array("icon"=>"upload",       "url"=>"m_upload",  "text"=>"Upload Soal"),
-            array("icon"=>"book",         "url"=>"absensi", "text"=>"Data Absensi"),
-          );
+            array("icon"=>"book",         "url"=>"m_absensi", "text"=>"Data Absensi"),
+          ); 
 } else {
   $menu = array(
             array("icon"=>"dashboard", "url"=>"", "text"=>"Dashboard")

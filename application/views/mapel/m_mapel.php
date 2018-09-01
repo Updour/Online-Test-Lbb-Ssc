@@ -2,7 +2,8 @@
   <div class="panel panel-info">
     <div class="panel-heading">Data Mata Pelajaran
       <div class="tombol-kanan">
-        <a class="btn btn-success btn-sm tombol-kanan" href="#" onclick="return m_mapel_e(0);"><i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;Tambah</a>
+        <a class="btn btn-success btn-sm tombol-kanan" href="#" onclick="return m_mapel_e(0);">
+          <i class="glyphicon glyphicon-plus"></i> &nbsp;&nbsp;Tambah</a>
       </div>
     </div>
     <div class="panel-body">
@@ -30,8 +31,8 @@
                       <button data-toggle="dropdown" class="btn btn-info">Manipulasi Data </button>
                       <ul class="dropdown-menu" >
                        <li> 
-                          <a href="#" onclick="return m_mapel_e('.$d->id.');" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-pencil" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Edit</a>
-                          <a href="#" onclick="return m_mapel_h('.$d->id.');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Hapus</a>';
+                          <a href="#" onclick="return m_mapel_e('.$d->id_mapel.');" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-pencil" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Edit</a>
+                          <a href="#" onclick="return m_mapel_h('.$d->id_mapel.');" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-remove" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Hapus</a>';
                 echo '</div>
                       </td>
                       </tr>
@@ -64,9 +65,11 @@
       </div>
       <div class="modal-body">
           <form name="f_mapel" id="f_mapel" onsubmit="return m_mapel_s();">
-            <input type="hidden" name="id" id="id" value="0">
+            <input type="hidden" name="id_mapel" id="id_mapel" value="">
               <table class="table table-form">
-                <tr><td style="width: 25%">Nama</td><td style="width: 75%"><input type="text" class="form-control" name="nama" id="nama" required></td></tr>
+                <tr><td style="width: 25%">Nama</td>
+                  <td style="width: 75%">
+                  <input type="text" class="form-control" name="nama" id="nama" required></td></tr>
               </table>
       </div>
       <div class="modal-footer">

@@ -10,7 +10,7 @@ function getFormData($form){
     return indexed_array;
 }
 
-/* 
+/*  makek ini juga mas
 =======================================
 =======================================
 */
@@ -171,6 +171,7 @@ function m_ujian_h(id) {
 
 //siswa
 function m_siswa_e(id) {
+	// alert("halo");
 	$("#m_siswa").modal('show');
 	$.ajax({
 		type: "GET",
@@ -197,7 +198,6 @@ function m_siswa_e(id) {
 function m_siswa_s() {
 	var f_asal	= $("#f_siswa");
 	var form	= getFormData(f_asal);
-
 	$.ajax({		
 		type: "POST",
 		url: base_url+"adm/m_siswa/simpan",
@@ -424,13 +424,13 @@ function m_guru_matkul_s() {
 
 
 //mapel
-function m_mapel_e(id) {
+function m_mapel_e(id_mapel) {
 	$("#m_mapel").modal('show');
 	$.ajax({
 		type: "GET",
-		url: base_url+"adm/m_mapel/det/"+id,
+		url: base_url+"adm/m_mapel/det/"+id_mapel,
 		success: function(data) {
-			$("#id").val(data.id);
+			$("#id_mapel").val(data.id_mapel);
 			$("#nama").val(data.nama);
 			$("#nama").focus();
 		}
@@ -458,11 +458,11 @@ function m_mapel_s() {
 	return false;
 }
 
-function m_mapel_h(id) {
+function m_mapel_h(id_mapel) {
 	if (confirm('Anda yakin..?')) {
 		$.ajax({
 			type: "GET",
-			url: base_url+"adm/m_mapel/hapus/"+id,
+			url: base_url+"adm/m_mapel/hapus/"+id_mapel,
 			success: function(response) {
 				if (response.status == "ok") {
 					window.location.assign(base_url+"adm/m_mapel"); 
@@ -565,80 +565,80 @@ $("#pilih_mapel").change(function() {
 
 // administrasi /ke uangan
 
-function m_spp_e(id_spp) {
-	$("#m_spp").modal('show');
-	$.ajax({
-		type: "GET",
-		url: base_url+"adm/m_spp/det/"+id_spp,
-		success: function(data) {
-			$("#id_spp").val(data.id_spp);
-			$("#no_kwitansi").val(data.no_kwitansi);
-			$("#nim").val(data.nim);
-			$("#jumlah_uang").val(data.jumlah_uang);
-			$("#tgl_bayar").val(data.tgl_bayar);
-			$("#ket_bayar").val(data.ket_bayar);
-			$("#ket_ll").val(data.ket_ll);
-			$("#no_kwitansi").focus();
-		}
-	});
-	return false;
-}
+// function m_spp_e(id_spp) {
+// 	$("#m_spp").modal('show');
+// 	$.ajax({
+// 		type: "GET",
+// 		url: base_url+"adm/m_spp/det/"+id_spp,
+// 		success: function(data) {
+// 			$("#id_spp").val(data.id_spp);
+// 			$("#no_kwitansi").val(data.no_kwitansi);
+// 			$("#nim").val(data.nim);
+// 			$("#jumlah_uang").val(data.jumlah_uang);
+// 			$("#tgl_bayar").val(data.tgl_bayar);
+// 			$("#ket_bayar").val(data.ket_bayar);
+// 			$("#ket_ll").val(data.ket_ll);
+// 			$("#no_kwitansi").focus();
+// 		}
+// 	});
+// 	return false;
+// }
 
-function m_spp_s() {
-	var f_asal	= $("#f_spp");
-	var form	= getFormData(f_asal);
+// function m_spp_s() {
+// 	var f_asal	= $("#f_spp");
+// 	var form	= getFormData(f_asal);
 
-	$.ajax({		
-		type: "POST",
-		url: base_url+"adm/m_spp/simpan",
-		data: JSON.stringify(form),
-		dataType: 'json',
-		contentType: 'application/json; charset=utf-8'
-	}).done(function(response) {
-		if (response.status == "ok") {
-			window.location.assign(base_url+"adm/m_spp"); 
-		} else {
-			console.log('gagal');
-		}
-	});
-	return false;
-}
+// 	$.ajax({		
+// 		type: "POST",
+// 		url: base_url+"adm/m_spp/simpan",
+// 		data: JSON.stringify(form),
+// 		dataType: 'json',
+// 		contentType: 'application/json; charset=utf-8'
+// 	}).done(function(response) {
+// 		if (response.status == "ok") {
+// 			window.location.assign(base_url+"adm/m_spp"); 
+// 		} else {
+// 			console.log('gagal');
+// 		}
+// 	});
+// 	return false;
+// }
 
-function m_spp_h(id_spp) {
-	if (confirm('Anda yakin..?')) {
-		$.ajax({
-			type: "GET",
-			url: base_url+"adm/m_spp/hapus/"+id_spp,
-			success: function(response) {
-				if (response.status == "ok") {
-					window.location.assign(base_url+"adm/m_spp"); 
-				} else {
-					console.log('gagal');
-				}
-			}
-		});
-	}
-	return false;
-}
+// function m_spp_h(id_spp) {
+// 	if (confirm('Anda yakin..?')) {
+// 		$.ajax({
+// 			type: "GET",
+// 			url: base_url+"adm/m_spp/hapus/"+id_spp,
+// 			success: function(response) {
+// 				if (response.status == "ok") {
+// 					window.location.assign(base_url+"adm/m_spp"); 
+// 				} else {
+// 					console.log('gagal');
+// 				}
+// 			}
+// 		});
+// 	}
+// 	return false;
+// }
 
-function m_spp_e(id_spp) {
-	$("#m_spp").modal('show');
-	$.ajax({
-		type: "GET",
-		url: base_url+"adm/m_spp/det/"+id_spp,
-		success: function(data) {
-			$("#id_spp").val(data.id_spp);
-			$("#no_kwitansi").val(data.no_kwitansi);
-			$("#nim").val(data.nim);
-			$("#jumlah_uang").val(data.jumlah_uang);
-			$("#tgl_bayar").val(data.tgl_bayar);
-			$("#ket_bayar").val(data.ket_bayar);
-			$("#ket_ll").val(data.ket_ll);
-			$("#no_kwitansi").focus();
-		}
-	});
-	return false;
-}
+// function m_spp_e(id_spp) {
+// 	$("#m_spp").modal('show');
+// 	$.ajax({
+// 		type: "GET",
+// 		url: base_url+"adm/m_spp/det/"+id_spp,
+// 		success: function(data) {
+// 			$("#id_spp").val(data.id_spp);
+// 			$("#no_kwitansi").val(data.no_kwitansi);
+// 			$("#nim").val(data.nim);
+// 			$("#jumlah_uang").val(data.jumlah_uang);
+// 			$("#tgl_bayar").val(data.tgl_bayar);
+// 			$("#ket_bayar").val(data.ket_bayar);
+// 			$("#ket_ll").val(data.ket_ll);
+// 			$("#no_kwitansi").focus();
+// 		}
+// 	});
+// 	return false;
+// }
  //upload gambar
 
 function m_upload() {

@@ -105,10 +105,17 @@
                   </td>
                   </tr>
                 <tr>
-                  <td style="width: 25%">Program</td>
-                  <td style="width: 75%">
-                    <input type="text" class="form-control" name="program" id="program" required>
-                  </td>
+                  <td style="width: 25%">
+                                Mata Pelajaran
+                            </td>
+                            <td style="width: 75%">
+                                  <select class="form-control" name="program" required="">
+                                     <option>Pilih Mata Pelajaran</option> 
+                                    
+                                    <option>$d->program</option>
+                                  
+                                </select>
+                            </td>
                 </tr>
                 <tr>
                   <td style="width: 25%">Sekolah</td>

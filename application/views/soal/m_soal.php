@@ -30,8 +30,8 @@ $uri4 = $this->uri->segment(4);
               
               <div class="btn-group tombol-kanan">
                 <a class="btn btn-default btn-xs">Pembuat: <?php echo $d->nama_guru; ?></a>
-                <a class="btn btn-info btn-xs" onclick="return m_soal_e('<?php echo $d->id; ?>');"><i class="glyphicon glyphicon-pencil" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Edit</a>
-                <a class="btn btn-warning btn-xs" onclick="return m_soal_h('<?php echo $d->id; ?>');"><i class="glyphicon glyphicon-remove" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Hapus</a>
+                <a class="btn btn-info btn-xs" onclick="return m_soal_e('<?php echo $d->id_soal; ?>');"><i class="glyphicon glyphicon-pencil" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Edit</a>
+                <a class="btn btn-warning btn-xs" onclick="return m_soal_h('<?php echo $d->id_soal; ?>');"><i class="glyphicon glyphicon-remove" style="margin-left: 0px; color: #fff"></i> &nbsp;&nbsp;Hapus</a>
               </div>
             </div>
             <div id="collapse<?php echo $no; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -41,7 +41,7 @@ $uri4 = $this->uri->segment(4);
             if ($d->gambar != "") {
             ?>
             <img src="<?php echo base_url(); ?>upload/gambar_soal/<?php echo $d->gambar; ?>" class="thumbnail" style="width: 300px; height: 280px; display: inline; float: left">
-            <a href="<?php echo base_url(); ?>adm/m_soal/hapus_gambar/<?php echo $this->uri->segment(4); ?>/<?php echo $d->id; ?>" style="display: inline; margin-left: 20px" onclick="return confirm('Anda yakin..?');">Hapus Gambar</a>
+            <a href="<?php echo base_url(); ?>adm/m_soal/hapus_gambar/<?php echo $this->uri->segment(4); ?>/<?php echo $d->id_soal; ?>" style="display: inline; margin-left: 20px" onclick="return confirm('Anda yakin..?');">Hapus Gambar</a>
             <table class="table table-bordered"><tbody>
               <?php 
               $arra = array("a","b","c","d","e");
